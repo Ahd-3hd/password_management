@@ -1,9 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { setCurrentUser } from "../../redux/auth/actionCreator";
 import {
   Container,
-  TestText,
+  Title,
   Button,
   ButtonText,
   Form,
@@ -13,21 +13,33 @@ import {
 } from "./index.style";
 
 const Login = () => {
+  const [loginData, setLoginData] = useState({ username: "", password: "" });
   const dispatch = useDispatch();
   const handleClick = () => {
     dispatch(setCurrentUser({ username: "Ahd", password: "123" }));
   };
   return (
     <Container>
-      <TestText>Login to your account</TestText>
+      <Title>Login to your account</Title>
       <Form>
         <InputGroup>
           <InputLabel>username</InputLabel>
-          <TextInput placeholder="Enter your username" />
+          <TextInput
+            placeholder="Enter your username"
+            onChangeText={(text) =>
+              setLoginData((prevState) => ({ ...prevState, username: text }))
+            }
+          />
         </InputGroup>
         <InputGroup>
-          <InputLabel>username</InputLabel>
-          <TextInput placeholder="Enter Password" />
+          <InputLabel>password</InputLabel>
+          <TextInput
+            placeholder="Enter Password"
+            secureTextEntry={true}
+            onChangeText={(text) =>
+              setLoginData((prevState) => ({ ...prevState, password: text }))
+            }
+          />
         </InputGroup>
         <Button onPress={handleClick}>
           <ButtonText>Login</ButtonText>
