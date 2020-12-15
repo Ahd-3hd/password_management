@@ -1,8 +1,16 @@
 import React from "react";
-import { View, Text } from "react-native";
 import { useDispatch } from "react-redux";
 import { setCurrentUser } from "../../redux/auth/actionCreator";
-import { Container, TestText, Button } from "./index.style";
+import {
+  Container,
+  TestText,
+  Button,
+  ButtonText,
+  Form,
+  TextInput,
+  InputLabel,
+  InputGroup,
+} from "./index.style";
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -11,8 +19,20 @@ const Login = () => {
   };
   return (
     <Container>
-      <TestText>Login asdasdassssdasdasd</TestText>
-      <Button title="login" onPress={handleClick} />
+      <TestText>Login to your account</TestText>
+      <Form>
+        <InputGroup>
+          <InputLabel>username</InputLabel>
+          <TextInput placeholder="Enter your username" />
+        </InputGroup>
+        <InputGroup>
+          <InputLabel>username</InputLabel>
+          <TextInput placeholder="Enter Password" />
+        </InputGroup>
+        <Button onPress={handleClick}>
+          <ButtonText>Login</ButtonText>
+        </Button>
+      </Form>
     </Container>
   );
 };
