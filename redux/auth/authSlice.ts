@@ -5,7 +5,7 @@ import {
   setCurrentUserFulPending,
   setCurrentUserFulRejected,
 } from "./authReducers";
-const initialState: IInitialState = {
+const initialState: IAuthState = {
   currentUser: null,
   isLoading: false,
   error: false,
@@ -17,8 +17,8 @@ const authSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder.addCase(setCurrentUser.fulfilled, setCurrentUserFulFilled);
-    builder.addCase(setCurrentUser.fulfilled, setCurrentUserFulPending);
-    builder.addCase(setCurrentUser.fulfilled, setCurrentUserFulRejected);
+    builder.addCase(setCurrentUser.pending, setCurrentUserFulPending);
+    builder.addCase(setCurrentUser.rejected, setCurrentUserFulRejected);
   },
 });
 

@@ -1,17 +1,17 @@
 export const setCurrentUserFulFilled = (
-  state: IInitialState,
-  action: { payload: ICurrentUser }
+  state: IAuthState,
+  action: { payload: ICurrentUser | null }
 ) => {
   state.currentUser = action.payload;
   state.isLoading = false;
   state.error = false;
 };
 
-export const setCurrentUserFulPending = (state: IInitialState) => {
+export const setCurrentUserFulPending = (state: IAuthState) => {
   state.isLoading = true;
 };
 
-export const setCurrentUserFulRejected = (state: IInitialState) => {
+export const setCurrentUserFulRejected = (state: IAuthState) => {
   state.isLoading = false;
-  state.error = false;
+  state.error = true;
 };
