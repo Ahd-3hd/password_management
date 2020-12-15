@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
-import { setCurrentUser } from "../../redux/auth/actionCreator";
 import {
   Container,
   Title,
@@ -12,12 +10,16 @@ import {
   InputGroup,
 } from "./index.style";
 
+import { useDispatch } from "react-redux";
+import { setCurrentUser, getCurrentUser } from "../../redux/ducks/currentUser";
+
 const Login = () => {
-  const [loginData, setLoginData] = useState({ username: "", password: "" });
   const dispatch = useDispatch();
-  const handleClick = () => {
-    dispatch(setCurrentUser({ username: "Ahd", password: "123" }));
+  const [loginData, setLoginData] = useState({ username: "", password: "" });
+  const handleLogin = () => {
+    dispatch(getCurrentUser());
   };
+
   return (
     <Container>
       <Title>Login to your account</Title>
@@ -41,7 +43,7 @@ const Login = () => {
             }
           />
         </InputGroup>
-        <Button onPress={handleClick}>
+        <Button onPress={handleLogin}>
           <ButtonText>Login</ButtonText>
         </Button>
       </Form>

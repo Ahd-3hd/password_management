@@ -1,0 +1,3 @@
+interface ICurrentUser {
+  username: string;
+}
