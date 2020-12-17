@@ -10,15 +10,9 @@ import {
   InputGroup,
 } from "./index.style";
 
-import { useDispatch } from "react-redux";
-import { setCurrentUser, getCurrentUser } from "../../redux/ducks/currentUser";
-
 const Login = () => {
-  const dispatch = useDispatch();
   const [loginData, setLoginData] = useState({ username: "", password: "" });
-  const handleLogin = () => {
-    dispatch(getCurrentUser());
-  };
+  const handleLogin = () => {};
 
   return (
     <Container>
