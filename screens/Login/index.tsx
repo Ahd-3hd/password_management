@@ -9,8 +9,14 @@ import {
   InputLabel,
   InputGroup,
 } from "./index.style";
+import { StackNavigationProp } from "@react-navigation/stack";
+import { RootStackParamList } from "../../components/Navigator";
 
-const Login = () => {
+type LoginScreenNavigationProp = StackNavigationProp<
+  RootStackParamList,
+  "Login"
+>;
+const Login = ({ navigation }: { navigation: LoginScreenNavigationProp }) => {
   const [loginData, setLoginData] = useState({ username: "", password: "" });
   const handleLogin = () => {};
 
@@ -41,6 +47,9 @@ const Login = () => {
           <ButtonText>Login</ButtonText>
         </Button>
       </Form>
+      <Button onPress={() => navigation.navigate("Signup")}>
+        <ButtonText>Create Account</ButtonText>
+      </Button>
     </Container>
   );
 };
