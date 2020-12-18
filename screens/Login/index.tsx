@@ -10,15 +10,20 @@ import {
   InputGroup,
 } from "./index.style";
 import { StackNavigationProp } from "@react-navigation/stack";
+import { useDispatch } from "react-redux";
 import { RootStackParamList } from "../../components/Navigator";
+import { login } from "../../redux/thunk/currentUser";
 
 type LoginScreenNavigationProp = StackNavigationProp<
   RootStackParamList,
   "Login"
 >;
 const Login = ({ navigation }: { navigation: LoginScreenNavigationProp }) => {
+  const dispatch = useDispatch();
   const [loginData, setLoginData] = useState({ username: "", password: "" });
-  const handleLogin = () => {};
+  const handleLogin = () => {
+    dispatch(login(loginData));
+  };
 
   return (
     <Container>

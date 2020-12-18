@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Container,
   Title,
@@ -9,14 +9,26 @@ import {
   InputLabel,
   InputGroup,
 } from "./index.style";
+import { useSelector, useDispatch } from "react-redux";
+import { signup } from "../../redux/thunk/currentUser";
 
 const Signup = () => {
+  const dispatch = useDispatch();
   const [signupData, setSignupData] = useState({
     username: "",
     password: "",
     repeated: "",
   });
-  const handleSignup = () => {};
+  const handleSignup = () => {
+    if (signupData.password === signupData.repeated) {
+      dispatch(
+        signup({
+          username: signupData.username,
+          password: signupData.password,
+        })
+      );
+    }
+  };
 
   return (
     <Container>

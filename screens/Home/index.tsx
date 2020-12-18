@@ -1,11 +1,36 @@
-import React from "react";
-import { Container, TestText, Button } from "./index.style";
+import React, { useState } from "react";
+import {
+  Container,
+  Title,
+  SearchInput,
+  PasswordsList,
+  PasswordComponent,
+  FloatingButton,
+  FloatingButtonText,
+} from "./index.style";
+import { useSelector, useDispatch } from "react-redux";
+import { Reducer } from "../../redux/store";
+
 const Home = () => {
-  const handleLogout = () => {};
+  const { username, passwords } = useSelector(
+    (state: Reducer) => state.currentUser
+  );
+  const [searchText, setSearchText] = useState("");
   return (
     <Container>
-      <TestText>Hello everybody!!</TestText>
-      <Button title="Logout" onPress={handleLogout} />
+      <Title>Hey {username} !</Title>
+      <SearchInput
+        onChangeText={(text) => setSearchText(text)}
+        placeholder="search term"
+      />
+      <PasswordsList>
+        {passwords.map((item) => {
+          <PasswordComponent title={item.title} />;
+        })}
+      </PasswordsList>
+      <FloatingButton>
+        <FloatingButtonText>ADD</FloatingButtonText>
+      </FloatingButton>
     </Container>
   );
 };
