@@ -1,6 +1,8 @@
 import styled from "styled-components/native";
 
-export const Container = styled.View``;
+export const Container = styled.View`
+  background: #fcfdff;
+`;
 export const Form = styled.View`
   padding: 32px 16px;
   border: 1px solid rgba(0, 0, 0, 0.1);

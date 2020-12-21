@@ -15,7 +15,6 @@ const currentUserSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder.addCase(login.fulfilled, (state, action) => {
-      console.log(action.payload);
       state.username = action.payload.username;
       state.loading = false;
       state.error = false;

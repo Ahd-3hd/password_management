@@ -10,13 +10,29 @@ import {
 } from "./index.style";
 import { useSelector, useDispatch } from "react-redux";
 import { Reducer } from "../../redux/store";
-
+import axios from "axios";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 export default function Entry() {
+  const dispatch = useDispatch();
   const [entryData, setEntryData] = useState({
     account: "",
     password: "",
   });
-  const handleSubmit = () => {};
+  const handleSubmit = async () => {
+    const token = AsyncStorage.getItem("token");
+    if (
+      entryData.account.length > 0 &&
+      entryData.password.length > 0 &&
+      token
+    ) {
+      dispatch(
+        createEntry({
+          ...entryData,
+          token,
+        })
+      );
+    }
+  };
   return (
     <Container>
       <Form>
