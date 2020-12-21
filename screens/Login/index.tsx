@@ -18,7 +18,8 @@ type LoginScreenNavigationProp = StackNavigationProp<
   RootStackParamList,
   "Login"
 >;
-const Login = ({ navigation }: { navigation: LoginScreenNavigationProp }) => {
+// { navigation: LoginScreenNavigationProp }
+const Login = ({ navigation }: any) => {
   const dispatch = useDispatch();
   const [loginData, setLoginData] = useState({ email: "", password: "" });
   const handleLogin = () => {

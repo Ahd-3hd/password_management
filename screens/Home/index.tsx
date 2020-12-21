@@ -10,8 +10,14 @@ import {
 } from "./index.style";
 import { useSelector, useDispatch } from "react-redux";
 import { Reducer } from "../../redux/store";
-
-const Home = () => {
+import { StackNavigationProp } from "@react-navigation/stack";
+import { RootStackParamList } from "../../components/Navigator";
+type HomeScreenNavigationProp = StackNavigationProp<
+  RootStackParamList,
+  "Entry"
+>;
+// { navigation: HomeScreenNavigationProp }
+const Home = ({ navigation }: any) => {
   const { username, passwords } = useSelector(
     (state: Reducer) => state.currentUser
   );
@@ -28,7 +34,7 @@ const Home = () => {
           <PasswordComponent title={item.title} />;
         })}
       </PasswordsList>
-      <FloatingButton>
+      <FloatingButton onPress={() => navigation.navigate("Entry")}>
         <FloatingButtonText>ADD</FloatingButtonText>
       </FloatingButton>
     </Container>

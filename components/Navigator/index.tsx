@@ -8,11 +8,13 @@ import { login } from "../../redux/thunk/currentUser";
 import { Reducer } from "../../redux/store";
 import Signup from "../../screens/Signup";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import Entry from "../../screens/Entry";
 
 export type RootStackParamList = {
   Home: undefined;
   Login: undefined;
   Signup: undefined;
+  Entry: undefined;
 };
 const Stack = createStackNavigator<RootStackParamList>();
 
@@ -41,7 +43,10 @@ const Navigator = () => {
         }}
       >
         {loggedIn ? (
-          <Stack.Screen name="Home" component={Home} />
+          <>
+            <Stack.Screen name="Home" component={Home} />
+            <Stack.Screen name="Entry" component={Entry} />
+          </>
         ) : (
           <>
             <Stack.Screen name="Login" component={Login} />

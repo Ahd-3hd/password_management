@@ -49,12 +49,13 @@ export const FloatingButton = styled.TouchableOpacity`
   right: 0;
   margin: 16px;
   padding: 16px;
-  height: 64px;
-  width: 64px;
+  height: 58px;
+  width: 58px;
   border-radius: 32px;
   display: flex;
   align-items: center;
   justify-content: center;
+  box-shadow: 0px 0px 4px #4561df;
 `;
 export const FloatingButtonText = styled.Text`
   font-weight: bold;
