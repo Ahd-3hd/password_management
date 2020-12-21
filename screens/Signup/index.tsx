@@ -16,6 +16,7 @@ const Signup = () => {
   const dispatch = useDispatch();
   const [signupData, setSignupData] = useState({
     username: "",
+    email: "",
     password: "",
     repeated: "",
   });
@@ -25,6 +26,7 @@ const Signup = () => {
         signup({
           username: signupData.username,
           password: signupData.password,
+          email: signupData.email,
         })
       );
     }
@@ -40,6 +42,15 @@ const Signup = () => {
             placeholder="Enter your username"
             onChangeText={(text) =>
               setSignupData((prevState) => ({ ...prevState, username: text }))
+            }
+          />
+        </InputGroup>
+        <InputGroup>
+          <InputLabel>email ( this is what will be used to login )</InputLabel>
+          <TextInput
+            placeholder="Enter your email"
+            onChangeText={(text) =>
+              setSignupData((prevState) => ({ ...prevState, email: text }))
             }
           />
         </InputGroup>
