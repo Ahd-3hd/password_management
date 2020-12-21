@@ -8,7 +8,6 @@ import { login } from "../../redux/thunk/currentUser";
 import { Reducer } from "../../redux/store";
 import Signup from "../../screens/Signup";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import axios from "axios";
 
 export type RootStackParamList = {
   Home: undefined;
@@ -24,13 +23,13 @@ const Navigator = () => {
   );
 
   useEffect(() => {
-    const data = async () => {
+    const verify = async () => {
       const token = await AsyncStorage.getItem("token");
       if (token) {
         dispatch(login(token));
       }
     };
-    data();
+    verify();
   }, []);
 
   return (
