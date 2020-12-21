@@ -14,9 +14,20 @@ const currentUserSlice = createSlice({
   initialState: currentUserInitialState,
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(login.fulfilled, (state, action) => {});
-    builder.addCase(login.pending, (state) => {});
-    builder.addCase(login.rejected, (state) => {});
+    builder.addCase(login.fulfilled, (state, action) => {
+      console.log(action.payload);
+      state.username = action.payload.username;
+      state.loading = false;
+      state.error = false;
+      state.loggedIn = true;
+    });
+    builder.addCase(login.pending, (state) => {
+      state.loading = true;
+    });
+    builder.addCase(login.rejected, (state) => {
+      state.error = true;
+      state.loading = false;
+    });
     builder.addCase(signup.fulfilled, (state, action) => {
       state.username = action.payload.username;
       state.loggedIn = true;

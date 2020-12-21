@@ -20,7 +20,7 @@ type LoginScreenNavigationProp = StackNavigationProp<
 >;
 const Login = ({ navigation }: { navigation: LoginScreenNavigationProp }) => {
   const dispatch = useDispatch();
-  const [loginData, setLoginData] = useState({ username: "", password: "" });
+  const [loginData, setLoginData] = useState({ email: "", password: "" });
   const handleLogin = () => {
     dispatch(login(loginData));
   };
@@ -30,11 +30,11 @@ const Login = ({ navigation }: { navigation: LoginScreenNavigationProp }) => {
       <Title>Login to your account</Title>
       <Form>
         <InputGroup>
-          <InputLabel>username</InputLabel>
+          <InputLabel>email</InputLabel>
           <TextInput
-            placeholder="Enter your username"
+            placeholder="Enter your email"
             onChangeText={(text) =>
-              setLoginData((prevState) => ({ ...prevState, username: text }))
+              setLoginData((prevState) => ({ ...prevState, email: text }))
             }
           />
         </InputGroup>
