@@ -9,6 +9,7 @@ import { Reducer } from "../../redux/store";
 import Signup from "../../screens/Signup";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import Entry from "../../screens/Entry";
+import { navigationRef } from "./RootNavigation";
 
 export type RootStackParamList = {
   Home: undefined;
@@ -35,7 +36,7 @@ const Navigator = () => {
   }, []);
 
   return (
-    <NavigationContainer>
+    <NavigationContainer ref={navigationRef}>
       <Stack.Navigator
         initialRouteName="Login"
         screenOptions={{
